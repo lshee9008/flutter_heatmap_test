@@ -22,7 +22,7 @@ class _HeatMapScreenState extends State<HeatMapScreen> {
     DateTime(2024, 11, 1): 1,
     DateTime(2024, 11, 2): 3,
     DateTime(2024, 11, 3): 5,
-    DateTime(2024, 11, 4): 2,
+    DateTime(2024, 11, 4): 9,
   };
 
   @override
@@ -41,6 +41,8 @@ class _HeatMapScreenState extends State<HeatMapScreen> {
             1: Colors.green[100]!,
             3: Colors.green[300]!,
             5: Colors.green[500]!,
+            7: Colors.green[700]!,
+            9: Colors.green[900]!,
           },
           showText: false,
           textColor: Colors.black,

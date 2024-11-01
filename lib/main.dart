@@ -19,10 +19,10 @@ class HeatMapScreen extends StatefulWidget {
 
 class _HeatMapScreenState extends State<HeatMapScreen> {
   final Map<DateTime, int> activityData = {
-    DateTime(2023, 11, 1): 1,
-    DateTime(2023, 11, 2): 3,
-    DateTime(2023, 11, 3): 5,
-    DateTime(2023, 11, 4): 2,
+    DateTime(2024, 11, 1): 1,
+    DateTime(2024, 11, 2): 3,
+    DateTime(2024, 11, 3): 5,
+    DateTime(2024, 11, 4): 2,
   };
 
   @override
@@ -36,6 +36,7 @@ class _HeatMapScreenState extends State<HeatMapScreen> {
           datasets: activityData,
           colorMode: ColorMode.opacity,
           defaultColor: Colors.grey[200]!,
+          scrollable: true,
           colorsets: {
             1: Colors.green[100]!,
             3: Colors.green[300]!,

@@ -1,56 +1,48 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_heatmap_test/pages/heatmap.dart';
-import 'package:flutter_heatmap_test/pages/heatmap_calendar.dart';
+import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Heatmap Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const MyHomePage(),
-        '/heatmap_calendar': (context) => const HeatMapCalendarExample(),
-        '/heatmap': (context) => const HeatMapExample(),
-      },
+      home: HeatMapScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
+class HeatMapScreen extends StatefulWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _HeatMapScreenState createState() => _HeatMapScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HeatMapScreenState extends State<HeatMapScreen> {
+  final Map<DateTime, int> activityData = {
+    DateTime(2023, 11, 1): 1,
+    DateTime(2023, 11, 2): 3,
+    DateTime(2023, 11, 3): 5,
+    DateTime(2023, 11, 4): 2,
+  };
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter heatmap example')),
-      body: SafeArea(
-        child: ListView(
-          children: <Widget>[
-            ListTile(
-              title: const Text('Heatmap calendar'),
-              onTap: () => Navigator.of(context).pushNamed('/heatmap_calendar'),
-            ),
-            ListTile(
-              title: const Text('Heatmap'),
-              onTap: () => Navigator.of(context).pushNamed('/heatmap'),
-            ),
-          ],
+      appBar: AppBar(
+        title: Text('GitHub 스타일 히트맵'),
+      ),
+      body: Center(
+        child: HeatMap(
+          datasets: activityData,
+          colorMode: ColorMode.opacity,
+          defaultColor: Colors.grey[200]!,
+          colorsets: {
+            1: Colors.green[100]!,
+            3: Colors.green[300]!,
+            5: Colors.green[500]!,
+          },
+          showText: false,
+          textColor: Colors.black,
         ),
       ),
     );
